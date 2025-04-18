@@ -1,16 +1,20 @@
 ﻿@page "/folder/{FolderName}"
 @inject NavigationManager Navigation
+@inject NavigationManager NavigationManager
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     @foreach (var image in Images)
     {
         <div class="overflow-hidden rounded-lg shadow-lg">
-            <img src="@($"/images/{FolderName}/{image}")" @onclick="() => OpenImage(image)" alt="Image: @image" class="w-full h-full object-cover"/>
+            <img src="@($"{baseUrl}images/{FolderName}/{image}")" @onclick="() => OpenImage(image)" alt="Image: @image" class="w-full h-full object-cover"/>
         </div>
     }
 </div>
 
 @code {
+    private string baseUrl = "/";
+    private List<string> Images = new List<string>();
+
     [Parameter]
     public required string FolderName { get; set; }
 
@@ -18,13 +22,13 @@
     {
         var fullPath = $"{FolderName}/{imageFileName}";
         var encodedPath = Uri.EscapeDataString(fullPath);
-        Navigation.NavigateTo($"/enlarge/{encodedPath}");
+        Navigation.NavigateTo($"{baseUrl}enlarge/{encodedPath}");
     }
-
-    private List<string> Images = new List<string>();
 
     protected override void OnInitialized()
     {
+        baseUrl = NavigationManager.BaseUri;
+
         if (FolderName == "ChildrenBooks")
         {
             Images = new List<string> {

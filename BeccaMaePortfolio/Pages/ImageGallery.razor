@@ -1,11 +1,12 @@
 ﻿@page "/image-gallery"
+@inject NavigationManager NavigationManager
 
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
     @foreach (var folder in Folders)
     {
         <div class="overflow-hidden rounded-lg shadow-lg">
-            <NavLink href="@($"/folder/{folder.Name}")" class="block">
-                <img class="w-full h-full object-cover" src="@($"/images/{folder.Name}/{folder.Thumbnail}")" alt="@folder.Description" />
+            <NavLink href="@($"{baseUrl}folder/{folder.Name}")" class="block">
+                <img class="w-full h-full object-cover" src="@($"{baseUrl}images/{folder.Name}/{folder.Thumbnail}")" alt="@folder.Description" />
             </NavLink>
             <figcaption class="text-center py-2">@folder.Description</figcaption>
         </div>
@@ -13,6 +14,13 @@
 </div>
 
 @code {
+    private string baseUrl = "/";
+
+    protected override void OnInitialized()
+    {
+        baseUrl = NavigationManager.BaseUri;
+    }
+
     private List<FolderModel> Folders = new List<FolderModel>
     {
         new FolderModel { Name = "ChildrenBooks", Description = "Children's Books", Thumbnail = "Cover photo 1.JPG" },

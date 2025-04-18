@@ -1,11 +1,11 @@
 ﻿@page "/enlarge/{ImagePath}"
 @using System.Web
 
+<img src="@($"/images/{@DecodedImagePath}")" alt="Enlarged Image" style="max-width: 100%; height: auto;" />
+
 @code {
     [Parameter]
     public required string ImagePath { get; set; }
 
     private string DecodedImagePath => HttpUtility.UrlDecode(ImagePath);
 }
-
-<img src="@($"/images/{@DecodedImagePath}")" alt="Enlarged Image" style="max-width: 100%; height: auto;" />
