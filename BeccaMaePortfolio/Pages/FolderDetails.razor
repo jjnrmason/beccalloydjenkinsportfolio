@@ -1,0 +1,256 @@
+﻿@page "/folder/{FolderName}"
+@inject NavigationManager Navigation
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    @foreach (var image in Images)
+    {
+        <div class="overflow-hidden rounded-lg shadow-lg">
+            <img src="@($"/images/{FolderName}/{image}")" @onclick="() => OpenImage(image)" alt="Image: @image" class="w-full h-full object-cover"/>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public required string FolderName { get; set; }
+
+    private void OpenImage(string imageFileName)
+    {
+        var fullPath = $"{FolderName}/{imageFileName}";
+        var encodedPath = Uri.EscapeDataString(fullPath);
+        Navigation.NavigateTo($"/enlarge/{encodedPath}");
+    }
+
+    private List<string> Images = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        if (FolderName == "ChildrenBooks")
+        {
+            Images = new List<string> {
+                "Cover Colouring Sheet.png",
+                "Gecko Colouring Sheet.png",
+                "Jungle Colouring Sheet.png",
+                "Snake Colouring Sheet.png",
+                "Book open photo 1.JPG",
+                "Book open photo 2.JPG",
+                "Cover photo 1.JPG",
+                "Cover photo 2.JPG",
+                "Full cover photo.jpg",
+                "Mini clay shoe.JPG",
+                "Process photo 1.JPG",
+                "Process photo 2.JPG",
+                "Spine assembly photo.JPG",
+                "Spread photo 1.JPG",
+                "Spread photo 2.JPG",
+                "Spread photo 3a.JPG",
+                "Spread photo 3b.jpg",
+                "Spread photo 4.JPG",
+                "Spread photo 5.JPG",
+                "Spread photo 6.JPG",
+                "Spread photo 7.JPG",
+                "Spread photo 8.JPG",
+                "Spread photo 9.JPG",
+                "Spread photo 10.JPG",
+                "Spread photo 11.JPG"
+            };
+        }
+        else if (FolderName == "CocoCola")
+        {
+            Images = new List<string> {
+                "All bottles mock-up.png",
+                "All bottles neoprene sleeve mock-up.png",
+                "Starpack Final Product Photos_Page_01.jpg",
+                "Starpack Final Product Photos_Page_02.jpg",
+                "Starpack Final Product Photos_Page_03.jpg",
+                "Starpack Final Product Photos_Page_04.jpg",
+                "Starpack Final Product Photos_Page_05.jpg",
+                "Starpack Final Product Photos_Page_06.jpg",
+                "Starpack Final Product Photos_Page_07.jpg",
+                "Starpack Final Product Photos_Page_08.jpg",
+                "Starpack Final Product Photos_Page_09.jpg",
+                "Starpack Final Product Photos_Page_10.jpg",
+                "Starpack Final Product Photos_Page_11.jpg",
+                "Starpack Final Product Photos_Page_12.jpg",
+                "Starpack Final Product Photos_Page_13.jpg",
+                "Starpack Final Product Photos_Page_14.jpg",
+                "Starpack Final Product Photos_Page_15.jpg",
+                "Starpack Final Product Photos_Page_16.jpg",
+                "Starpack Final Product Photos_Page_17.jpg"
+            };
+        }
+        else if (FolderName == "EmployabilityPortfolio")
+        {
+            Images = new List<string> {
+                "AFTER UNI.png",
+                "ASK ITALIAN.png",
+                "A4 Book Mockup.jpg",
+                "A4 Book Mockup.png",
+                "BCARDS.png",
+                "BRANDING.png",
+                "CONTENTS.png",
+                "COVER BOOK.png",
+                "COVER.png",
+                "DRPG AGENCY.png",
+                "Free_Book_Mockup_8.png",
+                "Free_Book_Mockup_9.png",
+                "GUEST SPEAKERS.png",
+                "KELLOGGS.png",
+                "KENSA.png",
+                "SWOT.png"    
+            };
+        } else if (FolderName == "FloralMural")
+        {
+            Images = new List<string> {
+                "IMG_0020_4.jpg",
+                "IMG_0079.jpg",
+                "IMG_0087.jpg",
+                "IMG_8399_2.jpg",
+                "IMG_8408.jpg",
+                "IMG_8487_2.jpg",
+                "IMG_8523_2.jpg",
+                "IMG_8556.jpg",
+                "IMG_8558_2.jpg",
+                "IMG_8598_2.jpg",
+                "IMG_8776_2.jpg",
+                "IMG_9073_2.jpg",
+                "IMG_9079_2.jpg",
+                "IMG_9251_3.jpg",
+                "IMG_9997_2.jpg",
+                "64753472933__EE323270-25C6-4CB9-A203-BFB40DF580A7_2.jpg"    
+            };
+        } else if (FolderName == "MenuDesign")
+        {
+            Images = new List<string> { 
+                "Final 1232 Menu Mockup.png",
+                "Final 1232 Menu Photo 2.jpg",
+                "Final 1232 Menu Photo.JPG",
+                "Final 1232 Menus Mockup.png",
+                "Menu Pattern -  Brunch.png",
+                "Menu Pattern -  Drinks.png",
+                "Menu Pattern - Breakfast.png",
+                "Menu Pattern - Lunch.png"
+            };
+        } else if (FolderName == "PigeonMag")
+        {
+            Images = new List<string> { 
+                "RLJ Magazine Mockup.png",
+                "RLJ Pigeon Mag Photos_Page_01.jpg",
+                "RLJ Pigeon Mag Photos_Page_02.jpg",
+                "RLJ Pigeon Mag Photos_Page_03.jpg",
+                "RLJ Pigeon Mag Photos_Page_04.jpg",
+                "RLJ Pigeon Mag Photos_Page_05.jpg",
+                "RLJ Pigeon Mag Photos_Page_06.jpg",
+                "RLJ Pigeon Mag Photos_Page_07.jpg",
+                "RLJ Pigeon Mag Photos_Page_08.jpg",
+                "RLJ Pigeon Mag Photos_Page_09.jpg",
+                "RLJ Pigeon Mag Photos_Page_10.jpg"
+            };
+        } else if (FolderName == "Purify")
+        {
+            Images = new List<string> { 
+                "PC.png",
+                "Phone.png"
+            };
+        } else if (FolderName == "REDCards")
+        {
+            Images = new List<string> { 
+                "Final Cards Mockup 1.png",
+                "Final Cards Mockup 2.png",
+                "Printing Final Cards.JPG",
+                "REDs Final Product 1.JPG",
+                "REDs Final Product 2.JPG",
+                "REDs Final Product 3.JPG",
+                "REDs Final Product 4.JPG",
+                "REDs Final Product 5.JPG",
+                "REDs Final Product 6.JPG"
+            };
+        } else if (FolderName == "SameDifference")
+        {
+            Images = new List<string> { 
+                "Asset 2@4x.png",
+                "Billboard Night.jpg",
+                "Billboard.jpg",
+                "colour sheets.jpg",
+                "Feedback Banner 2.jpg",
+                "Feedback Banner.JPG",
+                "Main Banner.jpg",
+                "SD - Selection.JPG",
+                "SD Final Flyer.JPG",
+                "SD Mini Flyer.JPG",
+                "21408650.jpg",
+                "484271441_689392553425302_8757540717258035876_n.jpg",
+                "484335647_689392563425301_4300387589462361680_n.jpg",
+                "484507883_689392253425332_7579775884980833659_n.jpg"
+            };
+        } else if (FolderName == "SpongebobToilet")
+        {
+            Images = new List<string> { 
+                "466623148_18028909505526864_462000442249113350_n.jpg",
+                "466662296_18028909661526864_9110418034885634333_n.jpg",
+                "466669839_18028909625526864_73335490279252750_n.jpg",
+                "466731626_18028909847526864_5142177493891846377_n.jpg"
+            };
+        } else if (FolderName == "Stamps")
+        {
+            Images = new List<string> { 
+                "Aston Martin Collage 1.png",
+                "Aston Martin Collage 2.jpg",
+                "Egg Collage 1.png",
+                "Egg Collage 2.png",
+                "FINAL Aston Martin Collage.png",
+                "FINAL Egg Collage.png",
+                "FINAL Music Collage.png",
+                "FINAL Squirrel Collage.png",
+                "King Charles Collage.png",
+                "Music Collage 1.jpg",
+                "Music Collage 1.png",
+                "Music Collage 2.jpg",
+                "RLJ - FINAL 4 STAMPS.jpg",
+                "Squirrel Collage 1.png",
+                "Squirrel Collage 2.jpg",
+                "Stamp Booklet Photo 1.JPG",
+                "Stamp Booklet Photo 2.JPG",
+                "Stamps On Envelopes.JPG"
+            };
+        } else if (FolderName == "StarWarsMural")
+        {
+            Images = new List<string> { 
+                "466352353_18028910531526864_1893401117235778393_n.jpg",
+                "466423728_18028910732526864_717750362176104875_n.jpg",
+                "466601029_18028910726526864_196902466298758569_n.jpg",
+                "466832154_18028910603526864_6731460833625731395_n.jpg",
+                "466981540_18028910468526864_2605353484642100682_n.jpg"
+            };
+        } else if (FolderName == "Syrup")
+        {
+            Images = new List<string> { 
+                "RLJ - DRPG FINAL Presentation_Page_2.jpg",
+                "RLJ - DRPG FINAL Presentation_Page_3.jpg",
+                "RLJ - DRPG FINAL Presentation_Page_4.jpg",
+                "RLJ - DRPG FINAL Presentation_Page_5.jpg",
+                "RLJ - DRPG FINAL Presentation_Page_6.jpg",
+                "RLJ - DRPG FINAL Presentation_Page_7.jpg"
+            };
+        } else if (FolderName == "TonysChocolonely")
+        {
+            Images = new List<string> { 
+                "Honourable Mention.png",
+                "TC x DFP Final Bar.png",
+                "TC x DFP Final Pattern.png"
+            };
+        } else if (FolderName == "383Canvas")
+        {
+            Images = new List<string> { 
+                "383 Canvas Pages_Page_1.jpg",
+                "383 Canvas Pages_Page_2.jpg",
+                "383 Canvas Pages_Page_3.jpg",
+                "383 Canvas Pages_Page_4.jpg",
+                "383 Canvas Pages_Page_5.jpg",
+                "383 Canvas Pages_Page_6.jpg",
+                "383 Canvas Pages_Page_7.jpg",
+                "383 Canvas Pages_Page_8.jpg"
+            };
+        }
+    }
+}

@@ -1,0 +1,41 @@
+﻿@page "/image-gallery"
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    @foreach (var folder in Folders)
+    {
+        <div class="overflow-hidden rounded-lg shadow-lg">
+            <NavLink href="@($"/folder/{folder.Name}")" class="block">
+                <img class="w-full h-full object-cover" src="@($"/images/{folder.Name}/{folder.Thumbnail}")" alt="@folder.Description" />
+            </NavLink>
+            <figcaption class="text-center py-2">@folder.Description</figcaption>
+        </div>
+    }
+</div>
+
+@code {
+    private List<FolderModel> Folders = new List<FolderModel>
+    {
+        new FolderModel { Name = "ChildrenBooks", Description = "Children's Books", Thumbnail = "Cover photo 1.JPG" },
+        new FolderModel { Name = "CocoCola", Description = "Coco-Cola", Thumbnail = "Starpack Final Product Photos_Page_01.jpg" },
+        new FolderModel { Name = "EmployabilityPortfolio", Description = "Employability Portfolio", Thumbnail = "COVER.png" },
+        new FolderModel { Name = "FloralMural", Description = "Floral Mural", Thumbnail = "IMG_0020_4.jpg" },
+        new FolderModel { Name = "MenuDesign", Description = "Menu Design", Thumbnail = "Final 1232 Menu Photo.JPG" },
+        new FolderModel { Name = "PigeonMag", Description = "Pigeon Mag", Thumbnail = "RLJ Magazine Mockup.png" },
+        new FolderModel { Name = "Purify", Description = "Purify", Thumbnail = "PC.png" },
+        new FolderModel { Name = "REDCards", Description = "REDs Cards", Thumbnail = "REDs Final Product 1.JPG" },
+        new FolderModel { Name = "SameDifference", Description = "Same Difference", Thumbnail = "SD Final Flyer.JPG" },
+        new FolderModel { Name = "SpongebobToilet", Description = "Spongebob Toilet", Thumbnail = "466731626_18028909847526864_5142177493891846377_n.jpg" },
+        new FolderModel { Name = "Stamps", Description = "Stamps", Thumbnail = "RLJ - FINAL 4 STAMPS.jpg" },
+        new FolderModel { Name = "StarWarsMural", Description = "Star Wars Mural", Thumbnail = "466832154_18028910603526864_6731460833625731395_n.jpg" },
+        new FolderModel { Name = "Syrup", Description = "Syrup", Thumbnail = "RLJ - DRPG FINAL Presentation_Page_2.jpg" },
+        new FolderModel { Name = "TonysChocolonely", Description = "Tony's Chocolonely", Thumbnail = "TC x DFP Final Bar.png" },
+        new FolderModel { Name = "383Canvas", Description = "383 Canvas", Thumbnail = "383 Canvas Pages_Page_1.jpg" }
+    };
+
+    public class FolderModel
+    {
+        public required string Name { get; set; }
+        public required string Description { get; set; }
+        public required string Thumbnail { get; set; }
+    }
+}
