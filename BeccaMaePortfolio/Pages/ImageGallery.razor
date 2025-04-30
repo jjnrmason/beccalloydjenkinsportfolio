@@ -6,7 +6,7 @@
     {
         <div class="overflow-hidden rounded-lg shadow-lg">
             <NavLink href="@($"{baseUrl}folder/{folder.Name}")" class="block">
-                <img class="w-full h-full object-cover" src="@($"{baseUrl}images/{folder.Name}/{folder.Thumbnail}")" alt="@folder.Description" />
+                <img class="w-full h-full object-cover" loading="lazy" src="@($"{baseUrl}images/{folder.Name}/{folder.Thumbnail}")" alt="@folder.Description" />
             </NavLink>
             <figcaption class="text-center py-2">@folder.Description</figcaption>
         </div>

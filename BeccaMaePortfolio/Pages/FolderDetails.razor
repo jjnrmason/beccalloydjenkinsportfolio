@@ -6,7 +6,7 @@
     @foreach (var image in Images)
     {
         <div class="overflow-hidden rounded-lg shadow-lg">
-            <img src="@($"{baseUrl}images/{FolderName}/{image}")" @onclick="() => OpenImage(image)" alt="Image: @image" class="w-full h-full object-cover"/>
+            <img src="@($"{baseUrl}images/{FolderName}/{image}")" loading="lazy" @onclick="() => OpenImage(image)" alt="Image: @image" class="w-full h-full object-cover"/>
         </div>
     }
 </div>
