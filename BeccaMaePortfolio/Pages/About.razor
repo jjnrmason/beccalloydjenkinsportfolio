@@ -1,28 +1,53 @@
 ﻿@page "/about"
+@inject NavigationManager NavigationManager
 
 <PageTitle>About</PageTitle>
 
-<div class="flex flex-wrap items-center gap-6 text-gray-700 mt-4 justify-start">
+<div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row items-start gap-0 px-4 md:px-6 py-8">
+  <!-- Text Section -->
+  <div class="md:w-1/2 md:flex-grow">
+    <h1 class="text-3xl mb-3">
+        Hey there! I’m Becca
+    </h1>
     <div>
         <span class="font-medium">Email:</span>
-        <a href="mailto:hello@example.com" class="text-blue-600 hover:underline">
-            hello@example.com
+        <a href="mailto:beccamaedesigns@outlook.com" class="text-blue-600 hover:underline">
+            beccamaedesigns@outlook.com
         </a>
     </div>
 
-    <div>
-        <span class="font-medium">Phone:</span>
-        <a href="tel:+441234567890" class="text-blue-600 hover:underline">
-            +44 1234 567890
-        </a>
-    </div>
-
-    <div>
+    <div class="mb-3">
         <span class="font-medium">Location:</span>
-        Albrighton, UK
+        Shropshire
     </div>
+    <p class="mb-3">
+      I'm a graphic designer and illustrator based in Shropshire who believes life’s too short for boring designs.
+    </p>
+    <p class="mb-3">
+      In my spare time, you may find me having food with friends, making aesthetically pleasing latte art, cuddling with my miniature dachshund Peanut or even baking up a sweet treat. However, I do also love being active at the gym, or trying to stay upright on a paddle board somewhere in Devon.
+    </p>
+    <p class="mb-3">
+      I love mixing creativity, colour, and a little bit of chaos into everything I do — and I’m always on the lookout for my next fun project!
+    </p>
+    <p class="mb-3">
+      My mission is to create playful, colourful art that spreads joy, sparks connection, and adds a little extra magic to everyday life—whether through vibrant illustrations, playful prints, or one-of-a-kind custom designs.
+    </p>
+  </div>
+
+  <!-- Image Section -->
+  <div class="md:w-1/2 flex justify-center md:justify-end">
+    <img src="@($"{baseUrl}images/AboutMe.jpg")"
+         alt="About Me"
+         class="w-full max-w-md h-auto rounded-lg md:rotate-1 md:scale-105 transition-transform duration-300" />
+  </div>
+</div>
 </div>
 
-<br>
+@code {
+    private string baseUrl = "/";
 
-<p>My name is Becca Lloyd-Jenkins. A creative soul from Albrighton who blends artistry with culinary delight—this graphic designer is not only passionate about bold layouts and vibrant visuals, but also skilled in the delicate craft of pastry. Whether they’re whipping up elegant éclairs or designing eye-catching branding, their attention to detail shines through. When not at the computer or in the kitchen, they can often be found strolling the village with their beloved sausage dog, who adds a bit of charm and mischief to their daily routine.</p>
+    protected override void OnInitialized() {
+        baseUrl = NavigationManager.BaseUri;
+    }
+}
